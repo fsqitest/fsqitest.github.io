@@ -23,8 +23,8 @@
         plasticity: document.getElementById("plasticity").value,
         moist_consistence: document.getElementById("moist_consistence").value,
         dry_consistence: document.getElementById("dry_consistence").value,
-        latitud: coordenadas.latitude,
-        longitud: coordenadas.longitude
+        latitude: coordenadas.latitude,
+        longitude: coordenadas.longitude
     };
     
 valores = document.querySelectorAll("select");
@@ -48,7 +48,8 @@ if(vacios<valores.length && vacios>0)
         await new Promise((resolve) => {
             document.getElementById("btnvalidar").addEventListener("click", resolve, { once: true });
         });
-        const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+         //const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+         const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
             {
                 method: "POST",
                 headers: {
@@ -63,7 +64,8 @@ if(vacios<valores.length && vacios>0)
     else if(vacios<valores.length)
         {
            
-            const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+            //const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+            const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
                 {
                     method: "POST",
                     headers: {
