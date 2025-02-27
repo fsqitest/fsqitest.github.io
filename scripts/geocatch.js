@@ -14,7 +14,10 @@ window.addEventListener('load', function() {
 
   function success(pos) {
     const crd = pos.coords;
-    coordenadas=`{longitude:${crd.latitude},latitude:${crd.longitude}}`
+    coordenadas={
+      longitude:crd.latitude,
+      latitude:crd.longitude
+    }
     console.log("Tu posición actual es:");
     console.log(`Latitud: ${crd.latitude}`);
     console.log(`Longitud: ${crd.longitude}`);

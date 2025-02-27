@@ -23,7 +23,8 @@
         plasticity: document.getElementById("plasticity").value,
         moist_consistence: document.getElementById("moist_consistence").value,
         dry_consistence: document.getElementById("dry_consistence").value,
-        ubicacion: coordenadas
+        latitud: coordenadas.latitude,
+        longitud: coordenadas.longitude
     };
     
 valores = document.querySelectorAll("select");
