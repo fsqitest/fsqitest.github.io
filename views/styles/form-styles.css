@@ -1,0 +1,18 @@
+input
+{
+    padding: 1em;
+}
+input[type="submit"]
+{
+    margin-top: 1em;
+}
+h2
+{
+    margin-top: 1em;
+}
+.boxel
+{
+    outline: 1px solid black;
+    padding: 0.5em;
+    border-radius: 1em;   
+}
