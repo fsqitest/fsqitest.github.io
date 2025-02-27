@@ -22,23 +22,10 @@
         stickiness: document.getElementById("stickiness").value,
         plasticity: document.getElementById("plasticity").value,
         moist_consistence: document.getElementById("moist_consistence").value,
-        dry_consistence: document.getElementById("dry_consistence").value
+        dry_consistence: document.getElementById("dry_consistence").value,
+        ubicacion: coordenadas
     };
-
-// Enviar la información al servidor
-// const respuesta = await fetch("http://127.0.0.1:8000/form/calcular",
-//     {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(formData)
-//     });
-
-//     const data = await respuesta.json();
-//     document.getElementById("resultado").innerText = "Porcentaje calculado: " + data.porcentaje + "%";
-// });
-
+    
 valores = document.querySelectorAll("select");
 advertencia=
 vacios=0;
@@ -50,26 +37,53 @@ valores.forEach((element)=>
         }
     });
 console.log(`nºvacios=>${vacios}`);
-
-if(vacios<valores.length)
+valorBoton=false;
+if(vacios<valores.length && vacios>0)
 {
-   
-    const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
+    if(vacios>0)
+    {
+        
+        $("#ModalDatos").modal('show');
+        await new Promise((resolve) => {
+            document.getElementById("btnvalidar").addEventListener("click", resolve, { once: true });
         });
-    
-        const data = await respuesta.json();
-        document.getElementById("resultado").innerText = "Porcentaje calculado: " + data.porcentaje + "%";    
+        const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+        
+            const data = await respuesta.json();
+            document.getElementById("resultado").innerText = "Porcentaje calculado: " + data.porcentaje + "%";
+    }
+    else if(vacios<valores.length)
+        {
+           
+            const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+            
+                const data = await respuesta.json();
+                document.getElementById("resultado").innerText = "Porcentaje calculado: " + data.porcentaje + "%";    
+        }
+        else
+        {
+            document.getElementById("resultado").innerText = "Por favor, rellene al menos un campo completo";
+        
+        }
 }
-else
-{
-    document.getElementById("resultado").innerText = "Por favor, rellene al menos un campo completo";
 
-}
-$("#exampleModalCenter").fadeIn();
+
+});
+$("#btnvalidar").click(async function() {
+
+    valorBoton=true
 });
