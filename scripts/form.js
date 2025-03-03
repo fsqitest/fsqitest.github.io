@@ -84,7 +84,21 @@ if(vacios<valores.length && vacios>0)
         
         }
 }
-
+else // TODO: No se está mostrando el mensaje de error
+{
+    const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+        //const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+    
+        const data = await respuesta.json();
+        document.getElementById("resultado").innerText = "Porcentaje calculado: " + data.porcentaje + "%";
+}
 
 });
 $("#btnvalidar").click(async function() {
