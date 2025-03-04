@@ -1,0 +1,15 @@
+/*@media (max-width: 1250px) 
+{
+    .movil
+    {
+        display : block;
+    }
+    .pc
+    {
+        display: none;
+    }
+}*/
+.movil
+{
+    display : none !important;
+}
