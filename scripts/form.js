@@ -1,7 +1,7 @@
 /*Script para captar la información del cliente y enviarla al servidor*/    
     document.getElementById("formulario").addEventListener("submit", async function(event) {
     event.preventDefault();
-
+    debugger;
     // captamos la información del formulario y la guardamos en un objeto
     // para enviarla al servidor de forma estructurada
     const formData = {
@@ -39,9 +39,9 @@ valores.forEach((element)=>
     });
 console.log(`nºvacios=>${vacios}`);
 valorBoton=false;
-if(vacios<valores.length && vacios>0)
+if(vacios>0)
 {
-    if(vacios>0)
+    if(vacios>0 && vacios<valores.length)
     {
         
         $("#ModalDatos").modal('show');
@@ -80,7 +80,7 @@ if(vacios<valores.length && vacios>0)
         }
         else
         {
-            document.getElementById("resultado").innerText = "Por favor, rellene al menos un campo completo";
+            document.getElementById("resultado").innerText = "Por favor, rellene al menos un campo";
         
         }
 }
