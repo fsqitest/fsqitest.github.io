@@ -1,7 +1,6 @@
 /*Script para captar la información del cliente y enviarla al servidor*/    
     document.getElementById("formulario").addEventListener("submit", async function(event) {
     event.preventDefault();
-    debugger;
     // captamos la información del formulario y la guardamos en un objeto
     // para enviarla al servidor de forma estructurada
     const formData = {
