@@ -22,32 +22,34 @@
                 <div class="campo col-12 col-md-6 text-center">
                     <b class="d-md-block">Soil matrix color</b>
                     <span class="d-block"></span>
-                    <span class="text-center col-6">Moist</span>
-                    <span class="text-center col-6">Dry</span>
+                    <span class="text-center col-6 mr-3 d-none d-lg-inline">Moist</span>
+                    <span class="text-center col-6 ml-5 d-none d-lg-inline">Dry</span>
                     <span class="d-block"></span>    
-                    <span class="text-center col-6">Hue</span>
-                    <select name="hue_moist" id="hue_moist" class="">
-                        <option value="Vacio" class="movil"></option>
+                    <span class="text-center d-none d-lg-inline">Hue</span>
+
+                    <select name="hue_moist" id="hue_moist" class="col-5">
+                        <option value="Vacio">Hue moist(empty)</option>
                         <option value="2.5Y">2.5Y</option>
                         <option value="2.5YR">2.5YR</option>
                         <option value="5YR">5YR</option>
                         <option value="7.5YR">7.5YR</option>
                         <option value="10YR">10YR</option>
                     </select>
-                    <select name="hue_dry" id="hue_dry">
-                        <option value="Vacio"></option>
+                    
+                    <select name="hue_dry" id="hue_dry" class="col-5">
+                        <option value="Vacio">Hue Dry (empty)</option>
                         <option value="2.5Y">2.5Y</option>
                         <option value="2.5YR">2.5YR</option>
                         <option value="5YR">5YR</option>
                         <option value="5YR">7.5YR</option>
                         <option value="10YR">10YR</option>
                     </select> 
-                    <span class="d-block"></span>
+                    <span class=" d-block mt-1"></span>
 
 
-                    <span class="pc">Value: </span>
-                    <select name="value_moist" id="value_moist">
-                        <option value="Vacio"></option>
+                    <span class="d-none d-lg-inline">Value: </span>
+                    <select name="value_moist" id="value_moist" class="col-5">
+                        <option value="Vacio">Moist value(empty)</option>
                         <option value="1.5">1.5</option>
                         <option value="2">2</option>
                         <option value="2.5">2.5</option>
@@ -61,8 +63,8 @@
                         <option value="6.5">6.5</option>
                         <option value="7">7</option>
                     </select>
-                    <select name="value_dry" id="value_dry">
-                        <option value="Vacio"></option>
+                    <select name="value_dry" id="value_dry" class="col-5">
+                        <option value="Vacio">Dry value(empty)</option>
                         <option value="2">2</option>
                         <option value="2.5">2.5</option>
                         <option value="3">3</option>
@@ -77,11 +79,11 @@
                         <option value="7.5">7.5</option>
                         <option value="8">8</option>
                     </select>
-                    <span class="d-block"></span>
+                    <span class=" d-block mt-1"></span>
 
-                    <span class="pc">Chroma: </span>
-                    <select name="chroma_moist" id="chroma_moist">
-                        <option value="Vacio"></option>
+                    <span class="pc d-none d-lg-inline">Chroma: </span>
+                    <select name="chroma_moist" id="chroma_moist" class="col-5">
+                        <option value="Vacio">chroma moist (empty)</option>
                         <option value="1">1</option>
                         <option value="1.5">1.5</option>
                         <option value="2">2</option>
@@ -94,8 +96,8 @@
                         <option value="5.5">5.5</option>
                         <option value="6">6</option>
                     </select> 
-                    <select name="chroma_dry" id="chroma_dry">
-                        <option value="Vacio"></option>
+                    <select name="chroma_dry" id="chroma_dry" class="col-5">
+                        <option value="Vacio">chroma dry(empty)</option>
                         <option value="1">1</option>
                         <option value="1.5">1.5</option>
                         <option value="2">2</option>
@@ -110,13 +112,13 @@
                     </select>
 
 
-                    <span class="d-block"></span>
+                    <span class="d-block mt-1"></span>
 
                     <b>Texture</b>
                     <span class="d-block"></span>
-                    <span class="pc">Texture class: </span>
-                    <select name="texture_class" id="texture_class">
-                        <option value="Vacio" class="movil">texture class</option>
+                    <span class="pc d-none d-lg-inline">Texture class: </span>
+                    <select name="texture_class" id="texture_class" class="col-10 col-lg-8">
+                        <option value="Vacio" class="movil">texture class (empty)</option>
                         <option value="C-Clay">C-Clay</option>
                         <option value="SC-Sandy clay">SC-Sandy clay</option>
                         <option value="L-Loamy">L-Loamy</option>
@@ -130,22 +132,23 @@
                         <option value="S-Sand">S-Sand</option>
                         <option value="Si-Silt">Si-Silt</option>
                     </select> 
-                    <span class="d-block"></span>
+                    <span class="d-block mt-1"></span>
 
                     <b>Porosity</b>
                     <span class="d-block"></span>
-                    <span class="pc">Abundance: </span>
-                    <select name="porosity_abundance" id="porosity_abundance">
-                        <option value="Vacio">porosity abundance</option>
+                    <span class="pc d-none d-lg-inline">Abundance: </span>
+                    <select name="porosity_abundance" id="porosity_abundance" class="col-10 col-lg-8">
+                        <option value="Vacio">porosity abundance (empty)</option>
                         <option value="Very few">Very few</option>
                         <option value="Few">Few</option>
                         <option value="Common">Common</option>
                         <option value="Many">Many</option>
                     </select>
                     <span class="d-block"></span>
-                    <span class="pc">Size: </span>
-                    <select name="porosity_size" id="porosity_size">
-                        <option value="Vacio">porosity size</option>
+                    <span class=" d-block mt-1"></span>
+                    <span class="pc d-none d-lg-inline">Size: </span>
+                    <select name="porosity_size" id="porosity_size" class="col-10 col-lg-8">
+                        <option value="Vacio">porosity size (empty)</option>
                         <option value="Very fine">Very fine</option>
                         <option value="Fine">Fine</option>
                         <option value="Medium">Medium</option>
@@ -156,64 +159,64 @@
                 </div>
                     
 
-
+                
 
                 
                 <div class="campo col-12 col-md-6 text-center">
-                    <b class="d-none d-md-block">Structure type</b>   
-
-                    <span class="pc">Type: </span>
-                    <select name="structure_type" id="structure_type">
-                        <option value="Vacio">structure type</option>
+                    <b>Structure type</b>   
+                    <span class="d-block"></span>
+                    <span class="pc d-none d-lg-inline">Type: </span>
+                    <select name="structure_type" id="structure_type" class="col-10 col-lg-8">
+                        <option value="Vacio">structure type(empty)</option>
                         <option value="Granular">Granular</option>
                         <option value="Crumbly">Crumbly</option>
                         <option value="Subangular blocky">Subangular blocky</option>
                         <option value="Angular blocky">Angular blocky</option>
                     </select>   
-                    <span class="d-block"></span>                         
-                    <span>Size: </span>
-                    <select name="structure_size" id="structure_size">
-                        <option value="Vacio">structure size</option>
+                    <span class=" d-block mt-1"></span>                         
+                    <span class="d-none d-lg-inline">Size: </span>
+                    <select name="structure_size" id="structure_size" class="col-10 col-lg-8">
+                        <option value="Vacio">structure size(empty)</option>
                         <option value="Very fine">Very fine</option>
                         <option value="Fine">Fine</option>
                         <option value="Medium">Medium</option>
                         <option value="Coarse">Coarse</option>
                         <option value="Very coarse">Very coarse</option>
                     </select> 
-                    <span class="d-block"></span>
-                    <span>Grade: </span>
-                    <select name="structure_grade" id="structure_grade">
-                        <option value="Vacio">structure grade</option>
+                    <span class=" d-block mt-1"></span>
+                    <span class="d-none d-lg-inline">Grade: </span>
+                    <select name="structure_grade" id="structure_grade" class="col-10 col-lg-8">
+                        <option value="Vacio">structure grade (empty)</option>
                         <option value="Very weak">Very weak</option>
                         <option value="Weak">Weak</option>
                         <option value="Moderate">Moderate</option>
                         <option value="Strong">Strong</option>
                     </select>  
-                    <span class="d-block"></span>
+
+                    <span class="d-block mt-1"></span>
                     <b>Consistence</b>
-                    <span class="d-block"></span>
-                    <span class="pc">Stickiness: </span>
-                    <select name="stickiness" id="stickiness">
-                        <option value="Vacio">stickiness</option>
+                    <span class=" d-block mt-1"></span>
+                    <span class="pc d-none d-lg-inline">Stickiness: </span>
+                    <select name="stickiness" id="stickiness" class="col-10 col-lg-8">
+                        <option value="Vacio">stickiness(empty)</option>
                         <option value="Non sticky">Non sticky</option>
                         <option value="Slightly sticky">Slightly sticky</option>
                         <option value="Sticky">Sticky</option>
                         <option value="Very sticky">Very sticky</option>
                     </select>
-                    <span class="d-block"></span>
-                    <span class="d-block"></span>
-                    <span class="pc">Plasticity: </span>
-                    <select name="plasticity" id="plasticity">
-                        <option value="Vacio">plasticity</option>
+                    <span class=" d-block mt-1"></span>
+                    <span class="pc d-none d-lg-inline">Plasticity: </span>
+                    <select name="plasticity" id="plasticity" class="col-10 col-lg-8">
+                        <option value="Vacio">plasticity (empty)</option>
                         <option value="Non plastic">Non plastic</option>
                         <option value="Slightly plastic">Slightly plastic</option>
                         <option value="Plastic">Plastic</option>
                         <option value="Very plastic">Very plastic</option>
                     </select>
-                    <span class="d-block"></span>
-                    <span class="pc">Moist consistence: </span>
-                    <select name="moist_consistence" id="moist_consistence">
-                        <option value="Vacio">moist consistence</option>
+                    <span class="d-block mt-1"></span>
+                    <span class="pc d-none d-lg-inline">Moist consistence: </span>
+                    <select name="moist_consistence" id="moist_consistence" class="col-10 col-lg-8">
+                        <option value="Vacio">moist consistence (empty)</option>
                         <option value="Loose">Loose</option>
                         <option value="Very friable">Very friable</option>
                         <option value="Friable">Friable</option>
@@ -222,10 +225,10 @@
                         <option value="Extremely firm">Extremely firm</option>
                     </select>
                     
-                    <span class="d-block"></span>
-                    <span class="pc">Dry consistence: </span>
-                    <select name="dry_consistence" id="dry_consistence">
-                        <option value="Vacio">dry consistence</option>
+                    <span class="d-block mt-1"></span>
+                    <span class="pc d-none d-lg-inline">Dry consistence: </span>
+                    <select name="dry_consistence" id="dry_consistence" class="col-10 col-lg-8">
+                        <option value="Vacio">dry consistence (empty)</option>
                         <option value="Loose">Loose</option>
                         <option value="Soft">Soft</option>
                         <option value="Slightly hard">Slightly hard</option>
@@ -233,27 +236,31 @@
                         <option value="Very hard">Very Hard</option>
                         <option value="Extremely hard">Extremely hard</option>
                     </select> 
-                    <span class="d-block"></span>
+                    <span class="d-block mt-1"></span>
                     <b>Root</b>
                     <span class="d-block"></span>
-                    <span class="pc">Abundance: </span>
-                    <select name="root_abundance" id="root_abundance">
-                        <option value="Vacio">root abundance</option>
+                    <span class="pc d-none d-lg-inline">Abundance: </span>
+                    <select name="root_abundance" id="root_abundance" class="col-10 col-lg-8">
+                        <option value="Vacio">root abundance(empty)</option>
                         <option value="Very few">Very few</option>
                         <option value="Few">Few</option>
                         <option value="Common">Common</option>
                         <option value="Many">Many</option>
                     </select>
-                    <span class="d-block"></span>
-                    <span class="pc">Size: </span>
-                    <select name="root_size" id="root_size">
-                        <option value="Vacio">root size</option>
+                    <span class= "d-block mt-1"></span>
+                    <span class="pc d-none d-lg-inline">Size: </span>
+                    <select name="root_size" id="root_size" class="col-10 col-lg-8">
+                        <option value="Vacio">root size(empty)</option>
                         <option value="Very fine">Very fine</option>
                         <option value="Fine">Fine</option>
                         <option value="Medium">Medium</option>
                         <option value="Coarse">Coarse</option>
                         <option value="Very coarse">Very coarse</option>
-                    </select> <span class="d-block"></span>
+                    </select> 
+                    <span class="d-block mt-1"></span>
+                        <b class="d-block">Sample taking date:</b>
+                        <input type="date" name="date" id="date" class="col-10 col-lg-8">
+                    <span class="d-block"></span>
                 </div>
             </div>
             

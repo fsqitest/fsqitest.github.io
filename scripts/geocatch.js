@@ -22,6 +22,7 @@ window.addEventListener('load', function() {
     console.log(`Latitud: ${crd.latitude}`);
     console.log(`Longitud: ${crd.longitude}`);
     console.log(`Con una precisión de aproximadamente ${crd.accuracy} metros.`);
+    //alert(`Con una precisión de aproximadamente ${crd.accuracy} metros.`);
   }
 
   function error(err) {
