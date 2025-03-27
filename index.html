@@ -277,7 +277,11 @@
                     <span class="d-block"></span>
                 </div>
             </div>
-            <div id="map"></div>
+            <div class="row">
+              <h2 class="text-center col-12">Selecciona la ubicaci&oacute;n de tu parcela</h2>
+              <div class="col-12" id="map"></div>
+            </div>
+             
             <script>
               // Definir la proyección EPSG:25830 usando proj4
               proj4.defs("EPSG:25830", "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs");
@@ -286,6 +290,7 @@
               // Crear la vista con la proyección EPSG:25830
               var view = new ol.View({
                 projection: 'EPSG:25830',
+                //center: [431568, 4182854], // Coordenadas aproximadas del centro
                 center: [431568, 4182854], // Coordenadas aproximadas del centro
                 zoom: 15
               });

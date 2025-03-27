@@ -2,68 +2,63 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ortofoto con OpenLayers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos de OpenLayers -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css">
   <style>
     #map {
-      width: 1rem;
-      height: 1rem;
+      width: 800px;
+      height: 600px;
+      margin: auto;
     }
   </style>
-  <!-- Cargar proj4 desde un CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
   <!-- Cargar OpenLayers -->
   <script src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"></script>
 </head>
 <body>
   <div id="map"></div>
   <script>
-    // Definir la proyección EPSG:25830 usando proj4
-    proj4.defs("EPSG:25830", "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs");
-    ol.proj.proj4.register(proj4);
-
-    // Crear la vista con la proyección EPSG:25830
+    // Crear la vista global usando EPSG:3857 (Web Mercator)
     var view = new ol.View({
-      projection: 'EPSG:25830',
-      center: [431568, 4182854], // Coordenadas aproximadas del centro
-      zoom: 15
+      projection: 'EPSG:3857',
+      center: [0, 0], // Centro global
+      zoom: 2       // Zoom para ver el mundo entero
     });
 
-    // Capa WMS con la ortofoto
-    var wmsLayer = new ol.layer.Tile({
+    // Capa base: Ortofoto global (ESRI World Imagery)
+    var orthoLayer = new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+      })
+    });
+
+    // Capa de parcelas: Catastro español (solo muestra datos en España)
+    var parcelLayer = new ol.layer.Tile({
       source: new ol.source.TileWMS({
-        url: 'https://www.ign.es/wms-inspire/pnoa-ma',
+        url: 'https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx',
         params: {
-          'LAYERS': 'OI.OrthoimageCoverage',
+          'LAYERS': 'Catastro',
           'FORMAT': 'image/png',
           'TRANSPARENT': true,
           'VERSION': '1.3.0',
-          'CRS': 'EPSG:25830'
+          'CRS': 'EPSG:3857'
         }
       })
     });
 
-    // Creación del mapa
+    // Crear el mapa con ambas capas
     var map = new ol.Map({
       target: 'map',
-      layers: [wmsLayer],
+      layers: [orthoLayer, parcelLayer],
       view: view
     });
 
-    // Evento para obtener coordenadas al hacer click
+    // Evento para obtener y mostrar coordenadas al hacer click
     map.on('click', function(evt) {
       var coord = evt.coordinate;
-      console.log('Coordenadas del click (EPSG:25830): ', coord);
-      alert('Coordenadas: ' + coord);
-      // Definir proyecciones
-        proj4.defs("EPSG:25830", "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs");
-        proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
-
-        // Convertir UTM a Lat/Lon
-        var coordenadasUTM = evt.coordinate; // X, Y en EPSG:25830
-        var coordenadasWGS84 = proj4("EPSG:25830", "EPSG:4326", coordenadasUTM);
-
-        console.log("Coordenadas WGS84: ", coordenadasWGS84); // [Longitud, Latitud]
+      var wgs84Coord = ol.proj.transform(coord, 'EPSG:3857', 'EPSG:4326');
+      alert('Coordenadas (EPSG:3857): ' + coord + '\nCoordenadas (WGS84): ' + wgs84Coord);
+      console.log(wgs84Coord)
     });
   </script>
 </body>
