@@ -5,3 +5,5 @@
 - las etiquetas span para quitar no funcionan bien, hay que quitarlas y cambiar el contenido del value vacio
 
 ---
+## 28 de marzo de 2025
+ya funciona a nivel peninsular, es importante esto por que podría ser necesario para la solución de julio calero
