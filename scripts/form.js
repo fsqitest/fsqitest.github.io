@@ -59,8 +59,8 @@ if(vacios>0)
                     document.getElementById("btnvalidar").addEventListener("click", resolve, { once: true });
                 });
                     //
-                    //const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
-                    const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
+                    const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+                    // const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
                     {
                         method: "POST",
                         headers: 
@@ -83,8 +83,8 @@ if(vacios>0)
                 document.getElementById("btnvalidar").addEventListener("click", resolve, { once: true });
             });
                 //
-                // const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
-                const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
+                const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+                // const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
                 {
                     method: "POST",
                     headers: {
@@ -101,8 +101,8 @@ if(vacios>0)
     else if(vacios<valores.length)
         {
            
-            // const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
-           const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
+            const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+        //    const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
                 {
                     method: "POST",
                     headers: {
@@ -122,8 +122,8 @@ if(vacios>0)
 }
 else // TODO: No se está mostrando el mensaje de error
 {
-    // const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
-        const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
+    const respuesta = await fetch("https://fsqi-backend.onrender.com/form/calcular",
+        // const respuesta = await fetch("http://192.168.72.62:8000/form/calcular",
         {
             method: "POST",
             headers: {
