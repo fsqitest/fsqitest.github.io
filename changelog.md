@@ -7,3 +7,6 @@
 ---
 ## 28 de marzo de 2025
 ya funciona a nivel peninsular, es importante esto por que podría ser necesario para la solución de julio calero
+
+## 2 de abril de 2025
+añadir la longitud y latitud como campos de texto, que se liberan tras clicar un checkbox.

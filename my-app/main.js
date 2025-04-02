@@ -57,6 +57,7 @@ import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import TileLayer from 'ol/layer/Tile.js';
 import XYZ from 'ol/source/XYZ.js';
+
 const map = new Map({
   target: 'mapWMTS', // Asegúrate de tener un elemento HTML con id "map"
   layers: [
@@ -82,4 +83,19 @@ map.once('rendercomplete', function () {
       listas[i].style.display = "none";
     }
   }
+  map.on('click', function(evt) {
+    var coord = evt.coordinate;
+    console.log('Coordenadas del click (EPSG:25830): ', coord);
+    alert('Coordenadas: ' + coord);
+    // Definir proyecciones
+      proj4.defs("EPSG:25830", "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs");
+      proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
+
+      // Convertir UTM a Lat/Lon
+      var coordenadasUTM = evt.coordinate; // X, Y en EPSG:25830
+      var coordenadasWGS84 = proj4("EPSG:25830", "EPSG:4326", coordenadasUTM);
+
+      console.log("Coordenadas WGS84: ", coordenadasWGS84); // [Longitud, Latitud]
+  });
 });
+
