@@ -285,16 +285,16 @@
             <script>
               // Definir la proyección EPSG:25830 usando proj4
               proj4.defs("EPSG:25830", "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs");
+              proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
               ol.proj.proj4.register(proj4);
-          
+            
               // Crear la vista con la proyección EPSG:25830
               var view = new ol.View({
                 projection: 'EPSG:25830',
-                //center: [431568, 4182854], // Coordenadas aproximadas del centro
-                center: [431568, 4182854], // Coordenadas aproximadas del centro
+                center: [431568, 4182854], // Coordenadas iniciales en EPSG:25830
                 zoom: 15
               });
-          
+            
               // Capa WMS con la ortofoto
               var wmsLayer = new ol.layer.Tile({
                 source: new ol.source.TileWMS({
@@ -308,30 +308,49 @@
                   }
                 })
               });
-          
-              // Creación del mapa
+            
+              // Crear el marcador como una Feature con un estilo Icon
+              var markerFeature = new ol.Feature({
+                geometry: new ol.geom.Point([431568, 4182854]) // Posición inicial
+              });
+            
+              markerFeature.setStyle(new ol.style.Style({
+                image: new ol.style.Icon({
+                  anchor: [0.5, 1],
+                  src: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png'
+                })
+              }));
+            
+              // Capa vectorial que contiene el marcador
+              var markerLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                  features: [markerFeature]
+                })
+              });
+            
+              // Crear el mapa
               var map = new ol.Map({
                 target: 'map',
-                layers: [wmsLayer],
+                layers: [wmsLayer, markerLayer], // Añadimos la capa del marcador
                 view: view
               });
-          
-              // Evento para obtener coordenadas al hacer click
+            
+              // Evento para mover el marcador al hacer clic
               map.on('click', function(evt) {
                 var coord = evt.coordinate;
                 console.log('Coordenadas del click (EPSG:25830): ', coord);
-                alert('Coordenadas: ' + coord);
-                // Definir proyecciones
-                  proj4.defs("EPSG:25830", "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs");
-                  proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
-          
-                  // Convertir UTM a Lat/Lon
-                  var coordenadasUTM = evt.coordinate; // X, Y en EPSG:25830
-                  var coordenadasWGS84 = proj4("EPSG:25830", "EPSG:4326", coordenadasUTM);
-          
-                  console.log("Coordenadas WGS84: ", coordenadasWGS84); // [Longitud, Latitud]
+            
+                // Actualizar la posición del marcador
+                markerFeature.setGeometry(new ol.geom.Point(coord));
+            
+                // Convertir a WGS84 para mostrar en consola
+                var coordenadasWGS84 = proj4("EPSG:25830", "EPSG:4326", coord);
+                console.log("Coordenadas WGS84: ", coordenadasWGS84);
+            
+                alert('Coordenadas EPSG:25830: ' + coord + '\nWGS84: ' + coordenadasWGS84);
               });
             </script>
+            
             <div class="botones row">
                 <input type="submit" value="Send form" class="btn btn-primary w-75 mr-auto ml-auto">
                 <input type="reset" value="Reset" class="btn btn-danger w-75 mr-auto ml-auto" style="margin-top: 1em;">
