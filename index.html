@@ -275,6 +275,17 @@
                         <span>sample taken the same day as the form is being filled </span><input type="checkbox" name="" id="dateCheck">
                         <input type="date" name="date" id="date" class="col-10 col-lg-8">
                     <span class="d-block"></span>
+
+
+                    <span class="d-block mt-1"></span>
+                        <b class="d-block">Location:</b>
+                        <span>location taken by device services </span><input type="checkbox" name="" id="locationCheck" checked>
+                        <span class="d-block"></span>
+                        <span>Longitude</span><input type="number" name="locationLongitude" id="locationLongitude" class="col-10 col-lg-8">
+                        <span class="d-block mt-1"></span>
+                        <span class="d-block"></span>
+                        <span>Latitude</span><input type="number" name="locationLatitude" id="locationLatitude" class="col-10 col-lg-8">
+                    <span class="d-block"></span>
                 </div>
             </div>
             <div class="row">
@@ -311,7 +322,7 @@
             
               // Crear el marcador como una Feature con un estilo Icon
               var markerFeature = new ol.Feature({
-                geometry: new ol.geom.Point([431568, 4182854]) // Posición inicial
+                geometry: new ol.geom.Point([431, 4182854]) // Posición inicial
               });
             
               markerFeature.setStyle(new ol.style.Style({
@@ -349,6 +360,33 @@
             
                 alert('Coordenadas EPSG:25830: ' + coord + '\nWGS84: ' + coordenadasWGS84);
               });
+              
+              if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                const lon = position.coords.longitude;
+                const lat = position.coords.latitude;
+
+                console.log("Posición del dispositivo (WGS84):", lon, lat);
+
+                // Convertimos a EPSG:25830
+                const coord25830 = proj4("EPSG:4326", "EPSG:25830", [lon, lat]);
+
+                console.log("Transformadas a EPSG:25830:", coord25830);
+
+                // Colocar el marcador ahí
+                markerFeature.setGeometry(new ol.geom.Point(coord25830));
+
+                // Centrar la vista en el marcador
+                map.getView().setCenter(coord25830);
+                map.getView().setZoom(15);
+
+              }, function(error) {
+                console.error("Error de geolocalización:", error.message);
+                alert("No se pudo obtener la ubicación del dispositivo.");
+              });
+            } else {
+              alert("Geolocalización no soportada por tu navegador.");
+}
             </script>
             
             <div class="botones row">
